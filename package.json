@@ -1,0 +1,65 @@
+{
+  "name": "recess-ims",
+  "version": "3.0.0",
+  "description": "RECESS IMS v3.0 - 애니메이션 제작 통합 관리 시스템",
+  "main": "main.js",
+  "author": "Ritera Pictures",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win --x64",
+    "build:portable": "electron-builder --win portable",
+    "pack": "electron-builder --dir"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.ritera.recess-ims",
+    "productName": "RECESS IMS",
+    "copyright": "Copyright © 2026 Ritera Pictures",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "app/**/*",
+      "build/icon.ico",
+      "build/icon.png"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "RECESS_IMS_v3_Setup.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "RECESS IMS",
+      "installerLanguages": ["ko_KR", "en_US", "ja_JP"],
+      "language": "1042"
+    },
+    "portable": {
+      "artifactName": "RECESS_IMS_v3_Portable.${ext}"
+    }
+  }
+}
